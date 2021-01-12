@@ -14,7 +14,7 @@ import { IExistingUser, INewUser } from '../models/IUser';
 })
 
 export class LoginComponent implements OnInit {
-  model: IExistingUser | INewUser;
+  model: any = {};
   signUpForm: boolean;
   ngUnsubscriber: Subject<any> = new Subject<any> ();
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this._userSvc.dLoginUser(this.model);
   }
 
-  signUp(pValue: INewUser) {
+  signUp(pValue) {
     this._userSvc.dSetSignUpState(pValue);
   }
 

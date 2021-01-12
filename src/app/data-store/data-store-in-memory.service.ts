@@ -33,7 +33,7 @@ export class DataStoreInMemoryService implements InMemoryDbService {
             title: "test 2",
             body: "test 2",
             media: "",
-            status: "active",
+            status: "inactive",
             createdDate: new Date('2021-01-09T20:20:28.642Z'),
             updatedDate: new Date('2021-01-09T20:20:28.642Z'),
             createdBy: "Ayush Nair",
