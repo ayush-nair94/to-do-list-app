@@ -1,0 +1,176 @@
+//variables
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+$base-font: 'Quicksand', sans-serif;
+
+$primary-color: #050D1A;
+$bg-color: #f2f6ff;
+$bg-dark-color: #15273F;
+$sec-color: #FDF8F5;
+$sec-dark-color: #B3C4D4;
+
+$boxshadow: 0 0 3px rgba($primary-color, .8);
+
+$header-height: 50px;
+
+
+
+//base 
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    height: 100%;
+    font-family: $base-font;
+    background-color: $bg-color;
+    color: $sec-color;
+    overflow: hidden;
+  }
+  label{
+    font-size: .8em;
+  }
+  
+  app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c3c3c3;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #c3c3c3;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #c3c3c3;
+  }
+
+input , textarea{
+  transition: all 0.2s ease;
+}
+input:focus, textarea:focus {
+  outline: transparent;
+  box-shadow: 0px 0px 3px 0.5px #8b84e6;
+}
+
+.has-error {
+  border: 1px solid #EC4847 !important;
+    
+}
+
+.error-message {
+    color: #EC4847;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.alert-danger {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+    background: #f15858;
+    color: #ffc9c9;
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    color: #ffffff;
+    background-color: #67da83;
+    border-color: #c3e6cb;
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.alert-cancel {
+    float: right;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+  display: block;
+  margin: 20% auto;
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes rotator {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(270deg);
+  }
+}
+
+@-webkit-keyframes colors {
+  0% {
+      stroke: #6f80d5;
+  }
+  25% {
+      stroke: #b18dfe;
+  }
+  50% {
+      stroke: #FFD683;
+  }
+  75% {
+      stroke: #25D6C9;
+  }
+  100% {
+      stroke: #6f80d5;
+  }
+}
+
+@keyframes colors {
+  0% {
+      stroke: #6f80d5;
+  }
+  25% {
+      stroke: #b18dfe;
+  }
+  50% {
+      stroke: #FFD683;
+  }
+  75% {
+      stroke: #25D6C9;
+  }
+  100% {
+      stroke: #6f80d5;
+  }
+}
+
+@keyframes dash {
+  0% {
+      stroke-dashoffset: 187;
+  }
+  50% {
+      stroke-dashoffset: 46.75;
+      transform: rotate(135deg);
+  }
+  100% {
+      stroke-dashoffset: 187;
+      transform: rotate(450deg);
+  }
+}
+  
+  
+

@@ -1,0 +1,5 @@
+<svg id="Component_1_1" data-name="Component 1 – 1" xmlns="http://www.w3.org/2000/svg" width="372.681" height="71.098" viewBox="0 0 372.681 71.098">
+  <text id="TrackNote" transform="translate(73.681 58.098)" fill="#6b19ff" font-size="60" font-family="LucidaGrande, Lucida Grande"><tspan x="0" y="0">TrackNote</tspan></text>
+  <path id="Icon_awesome-sticky-note" data-name="Icon awesome-sticky-note" d="M39.721,47.635H57.036V6.032c0-2.1-1.362-3.782-3.055-3.782H3.055C1.362,2.25,0,3.936,0,6.032V69.066c0,2.1,1.362,3.782,3.055,3.782h33.61V51.417C36.666,49.336,38.041,47.635,39.721,47.635ZM56.144,56.3,43.668,71.745a2.789,2.789,0,0,1-2.164,1.1H40.74V52.677h16.3v.961A4.268,4.268,0,0,1,56.144,56.3Z" transform="translate(0 -2.25)" fill="#6b19ff"/>
+  <path id="Icon_awesome-pen" data-name="Icon awesome-pen" d="M11.877,3.5l5.23,4.8L5.75,18.731,1.088,19.2a.943.943,0,0,1-1.082-.995l.519-4.285L11.877,3.5Zm8.465-.715L17.886.528a2.087,2.087,0,0,0-2.774,0L12.8,2.65l5.23,4.8,2.31-2.122a1.7,1.7,0,0,0,0-2.548Z" transform="translate(16.531 22.09)" fill="#fff"/>
+</svg>

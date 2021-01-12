@@ -1,0 +1,27 @@
+<header-view></header-view>
+<div class="add-note-button" *ngIf="userNotes?.length > 0">
+    <button type="button" class="add-button" (click)="add()" routerLink="/add" > + Add Note</button>
+</div>
+<div class="user-notes-list-view" *ngIf="!loading">
+    <div *ngIf="userNotes?.length == 0" class="empty-note-details-div">
+        <div class="empty-note-image">
+            <img src="assets/note.svg" id="icon" alt="Company Icon" />
+        </div>
+        <div class="empty-note-text">
+            There are no notes to display here.
+        </div>
+        <div class="add-note-button">
+            <button type="button" class="add-button" (click)="add()" routerLink="/add" > + Add Note</button>
+        </div>
+    </div>
+
+    <card *ngFor="let note of userNotes" [cardData]="note"></card>
+
+</div>
+
+<div *ngIf="loading">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+</div>
+<router-outlet></router-outlet>

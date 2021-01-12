@@ -1,0 +1,110 @@
+import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import {trigger, state, transition, style, animate } from '@angular/animations';
+import * as _ from 'lodash';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import * as moment from 'moment';
+import { Router } from '@angular/router';
+
+import { NotesViewService } from '../../state/notes-view.service';
+import { IUserNote } from 'src/app/data-store/interfaces/IUserNote';
+import { parseDataForSave } from '../../state/notes-view.helper';
+
+
+@Component({
+  selector: 'notes-add-edit-view',
+  templateUrl: './notes-add-edit-view.component.html',
+  styleUrls: ['./notes-add-edit-view.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+        transition(':enter', [
+          style({
+              transform: 'scale(0.1)',
+              top: '300px',
+              opacity: '0',
+              transition: 'all 0.3s'
+          }),
+          animate('200ms ease-in', style({
+              transform: 'translate3d(0, 0, 0)',
+              opacity: '1',
+              transition: 'all 0.3s'
+          }))
+        ]),
+        transition(':leave', [
+          animate('200ms ease-in', style({transform: 'translateY(-100%)'}))
+        ])
+      ])
+  ]
+})
+
+export class NotesAddEditViewComponent implements OnInit{
+    showModal: boolean;
+    state: string;
+    selectedNote: IUserNote;
+    ngUnsubscriber: Subject<any> = new Subject<any>();
+
+    constructor(private _notesSvc: NotesViewService, private _router: Router) {
+        this._notesSvc.sGetAddEditViewState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((flag: boolean) => {
+            if(this.showModal && !flag) {
+                this._router.navigate(['notes/']);
+            }
+            this.showModal = flag;
+        });
+        this._notesSvc.sGetFormState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: string) => {
+            this.state = data;
+        });
+        this._notesSvc.sGetSelectedNote().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: IUserNote) => {
+            this.selectedNote = _.cloneDeep(data);
+        });
+    }
+
+    ngOnInit() {
+
+    }
+
+    hideModal(pValue) {
+        this._notesSvc.dSetAddEditViewState({ flag: false, state: ''});
+        this._router.navigate(['notes/']);
+    }
+
+    cancel() {
+        this._notesSvc.dSetAddEditViewState({ flag: false, state: ''});
+        this._router.navigate(['notes/']);
+    }
+
+    saveNote() {
+        this.state.toLowerCase() == 'add' ? this._notesSvc.dSaveNote(parseDataForSave(this.selectedNote, this.state)) : this._notesSvc.dSaveNote(parseDataForSave(this.selectedNote, this.state));
+    }
+
+    editNote() {
+        this._notesSvc.dSetAddEditViewState({ flag: true, state: 'Edit'});
+    }
+
+    deleteNote() {
+        this._notesSvc.dDeleteNote(this.selectedNote.id);
+    }
+
+    ngOnDestroy() {
+        this.ngUnsubscriber.next();
+        this.ngUnsubscriber.complete();
+    }
+
+    get updatedDate() {
+        if(this.selectedNote !== undefined && this.selectedNote.updatedDate !== undefined) {
+          let date = moment.utc(this.selectedNote.updatedDate).local();
+          return date.format('DD/MM/YYYY HH:mm:ss');
+        } else {
+            return '';
+        }
+    }
+
+    get createdDate() {
+        if(this.selectedNote !== undefined && this.selectedNote.createdDate !== undefined) {
+          let date = moment.utc(this.selectedNote.createdDate).local();
+          return date.format('DD/MM/YYYY HH:mm:ss');
+        } else {
+            return '';
+        }
+    }
+}
+

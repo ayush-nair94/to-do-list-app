@@ -1,0 +1,86 @@
+<div id="myModal" class="modal fade" role="dialog"  *ngIf="showModal">
+    <div class="modal-dialog" [@slideInOut]>
+  
+      <!-- Modal content-->
+      <div class="modal-content" *ngIf="state.toLowerCase() === 'view'">
+        <div class="modal-header">
+          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal(false)">&times;</button>
+          <h4 class="modal-title">{{state}} Note</h4>
+        </div>
+        <div class="modal-body" id="modalbody">
+
+            <div class="note-view-box">
+                <div class="view-button-operations" *ngIf="selectedNote?.status.toLowerCase() == 'active'">
+                    <div class="edit-button operation-button" (click)="editNote()">
+                        <span class="edit-image"></span> Edit
+                    </div>
+                    <div class="delete-button operation-button" (click)="deleteNote()">
+                        <span class="delete-image"></span> Delete
+                    </div>
+                </div>
+
+                <div class="full-width titleBox">
+                    <label>Title</label>
+                    <span class="note-data">{{ selectedNote.title }}</span>
+                </div>
+
+                <div class="full-width description-box">
+                    <label>Description</label>
+                    <span class="note-data"> {{selectedNote.body}}</span>
+                </div>
+
+                <div class="half-width media-box">
+                    <label>Media</label>
+                    <span class="note-data">No Media attached.</span>
+                </div>
+
+                <div class="half-width status-box">
+                    <label>Status</label>
+                    <span class="note-data">{{selectedNote.status}}</span>
+                </div>
+
+                <div class="half-width media-box">
+                    <label>Created On</label>
+                    <span class="note-data">{{createdDate}}</span>
+                </div>
+
+                <div class="half-width status-box">
+                    <label>Last Updated On</label>
+                    <span class="note-data">{{updatedDate}}</span>
+                </div>
+
+            </div>
+        </div>
+      </div>
+
+
+      <div class="modal-content" *ngIf="state.toLowerCase() !== 'view'">
+        <div class="modal-header">
+          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal(false)">&times;</button>
+          <h4 class="modal-title">{{state}} Note</h4>
+        </div>
+        <div class="modal-body" id="modalbody">
+            <form name="form" (ngSubmit)="f.form.valid && saveNote()" #f="ngForm" novalidate>
+                <div class="top-box">
+                  <div class="input-field-box">
+                    <label>Title</label>
+                    <input class="input-field" type="text" name="title" placeholder="Title" [(ngModel)]="selectedNote.title" #title="ngModel"
+                      required />
+                    <span class="error-message" *ngIf="f.submitted && !title.valid">Title is required!</span>
+                  </div>
+                </div>
+                <div class="description-field-box">
+                  <label>Description</label>
+                  <textarea class="" type="text" name="description" placeholder="Description" [(ngModel)]="selectedNote.body" #description="ngModel" required></textarea>
+                  <span class="error-message" *ngIf="f.submitted && !description.valid">Description is required!</span>
+                </div>
+                <div class="button-operations">
+                    <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+                    <button type="submit" class="save-button">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+  
+    </div>
+  </div>

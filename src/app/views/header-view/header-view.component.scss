@@ -1,0 +1,150 @@
+.navbar {
+    height: 78px;
+    display: block;
+    background: linear-gradient(158deg, rgba(178,141,254,1) 7%, rgba(104,126,209,1) 100%);
+    position: absolute;
+    width: 100%;
+    top: 0px;
+
+    .container {
+        width: 35%;
+        display: inline-block;
+        position: relative;
+        right: 0px;
+
+        .navbar-brand {
+            margin-left: 35px;
+            margin-top: 18px;
+            display: inline-block;
+            .fa {
+                img {
+                    width: 185px;
+                }
+            }
+        }
+    }
+
+    .search-bar {
+        display: inline-block;
+        width: 40%;
+        position: relative;
+        top: 4px;
+
+        input {
+            width: 19%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            font-size: 16px;
+            height: 37px;
+            color: #999999;
+            background-color: #fafafa;
+            padding: 12px 25px 12px 12px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+            float: right;
+            text-overflow: ellipsis;
+          }
+
+          input[type=text]:placeholder {
+            color: #cccccc;
+          }
+          
+          input:focus {
+            width: 60%;
+            outline: transparent;
+            border: solid 1px #687ed1;
+            box-shadow: 0px 0px 5px #687ed1;
+          }
+
+        .search-icon {
+            position: absolute;
+            right: 13px;
+            top: 10px;
+            cursor: pointer;
+
+            img { 
+                width: 15px;
+            }
+        }
+    }
+
+    .user-name {
+        color: #ffffff;
+        margin-right: 10px;
+        font-size: 18px;
+        position: absolute;
+        right: 2%;
+        width: 20%;
+        top: 28px;
+    }
+
+    .user-option {
+        float: right;
+        position: relative;
+        top: 19px;
+        right: 3%;
+
+        .user-icon {
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+        }
+
+        .user-operations {
+            display: none;
+        }
+
+        &:hover {
+            .user-operations {
+                display: block;
+                position: absolute;
+                height: 48px;
+                background: #f8f9fa;
+                padding: 10px 0px 0px 0px;
+                right: -30px;
+                top: 50px;
+                border: 1px solid #e4e4e4;
+                border-radius: 5px;
+                z-index: 1000;
+                box-shadow: 0 2px 10px 0px rgba(0,0,0,0.3);
+
+                li {
+                    display: flex;
+                    font-size: 14px;
+                    color: #999999;
+                    cursor: pointer;
+                    padding: 5px 10px;
+                    height: 37px;
+
+                    span{
+                        .logout-option {
+                            height: 20px;
+                            margin: -2px 8px 0px 0px;
+                        }
+                    }
+
+                    &:hover {
+                        color: #8e8e8e;
+                        background: #eaeaea;
+                    }
+                }
+            }
+
+            .user-operations:before {
+                content: "";
+                position: absolute;
+                width: 20.28px;
+                height: 20.28px;
+                transform: scaleY(0.7774) rotate(135deg);
+                background-color: #f8f9fa;
+                left: 35px;
+                top: -11px;
+                border-bottom: solid 2.5px #e4e4e4;
+                border-left: solid 2.5px #e4e4e4;
+            }
+        }
+
+    }
+}

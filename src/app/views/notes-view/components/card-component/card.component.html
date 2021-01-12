@@ -1,0 +1,11 @@
+<div class="user-note" (click)="viewNote()" routerLink="/{{cardEntityDetail?.id}}/view"> 
+ <div class="user-note-head-bar">
+    <div class="user-note-title" *ngIf="cardEntityDetail?.title">{{cardEntityDetail.title}}</div>
+    <span class="status-label" [ngClass]="{
+        'active': cardEntityDetail?.status.toLowerCase() == 'active',
+        'inactive': cardEntityDetail?.status.toLowerCase() == 'inactive'
+    }"></span>
+ </div>
+ <div class="user-note-description" *ngIf="cardEntityDetail?.body">{{cardEntityDetail.body}}</div>
+ <span class="note-updation-date"><span class="note-updation-string">Last Updated At: </span>{{updatedDate}}</span>
+</div>

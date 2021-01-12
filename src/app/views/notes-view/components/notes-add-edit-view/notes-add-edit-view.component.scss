@@ -1,0 +1,242 @@
+.modal {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+    background: #4240407a;
+
+    .modal-dialog {
+        width: 40%;
+        margin: 0 auto;
+        background: #f2f6ff;
+        height: 450px;
+        border-radius: 5px;
+
+        .modal-content {
+
+            margin-top: 100px;
+
+            .modal-header {
+
+                background: linear-gradient(158deg, rgba(178,141,254,1) 7%, rgba(104,126,209,1) 100%);
+                padding: 5px;
+
+                button {
+                    width: 28px;
+                    float: right;
+                    margin-right: 18px;
+                    padding: 1px 5px;
+                    height: 33px;
+                    font-size: 35px;
+                    margin-top: 14px;
+                    background: transparent;
+                    border: transparent;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .modal-title {
+                    text-align: center;
+                    font-size: 18px;
+                    margin-left: 30px;
+                }
+            }
+
+            .modal-body {
+                 
+                margin: 0px;
+                width: auto;
+                margin: 15px;
+
+                p {
+                    text-align: center;
+                    font-size: 17px;
+                }
+
+                .action-buttons {
+                    
+                    margin: 0 auto;
+                    margin-top: 40px;
+                    margin-left: 25%;
+
+                    button {
+                        width: 30%;
+                        margin: 0 2%;
+                        display: inline-block;
+                    }
+                }
+
+                .top-box {
+
+                    .input-field-box {
+                        
+                        label {
+                            display: block;
+                            color: grey;
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        input {
+                            border-color: #e6e6e6;
+                            border-style: solid;
+                            padding: 12px;
+                            width: 95%;
+                            border-radius: 5px;
+                            margin: 10px 2px;
+                        }
+
+                        .error-message {
+                            color: red;
+                            font-size: 13px;
+                            padding-bottom: 10px;
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                .description-field-box {
+                    margin-bottom: 40px;
+
+                    label {
+                        display: block;
+                        color: grey;
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+
+                    textarea {
+                        border-color: #e6e6e6;
+                        border-style: solid;
+                        padding: 12px;
+                        width: 95%;
+                        border-radius: 5px;
+                        margin: 10px 2px;
+                        font-family: 'Quicksand';
+                        height: 70px;
+                    }
+                }
+
+                button {
+                    float: right;
+                    margin: 5px;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    border: transparent;
+                }
+
+                .save-button {
+                    border: solid 1px #ad8cfa;
+                    background: transparent;
+                    color: #ad8cfa;
+
+                    &:hover {
+                        box-shadow: 0 10px 30px 0 rgb(202 196 255);
+                        background: #ad8cfa;
+                        color: white;
+                    }
+                }
+
+                .cancel-button {
+                    border: solid 1px #ad8cfa;
+                    background: transparent;
+                    color: #ad8cfa;
+                    
+
+                    &:hover {
+                        cursor: pointer;
+                        box-shadow: 0 10px 30px 0 rgb(202 196 255);
+                        background: #ad8cfa;
+                        color: white;
+                    }
+                }
+
+                .note-view-box {
+
+                    .view-button-operations {
+                        text-align: end;
+
+                        .operation-button {
+                            display: inline-block;
+                            color: #ad8cfa;
+                            padding: 6px 12px 6px 10px;
+                            margin-right: 10px;
+                            font-size: 15px;
+                            border: solid 1px #ad8cfa;
+                            border-radius: 5px;
+
+                            .edit-image {
+                                width: 13px;
+                                background-image: url(../../../../../assets/edit.svg);
+                                display: inline-block;
+                                height: 13px;
+                                background-repeat: round;
+                            }
+
+                            .delete-image {
+                                width: 13px;
+                                background-image: url(../../../../../assets/delete.svg);
+                                display: inline-block;
+                                height: 13px;
+                                background-repeat: round;
+                            }
+
+                            &:hover {
+                                background: #ad8cfa;
+                                color: white;
+                                cursor: pointer;
+                                box-shadow: 0 10px 30px 0 rgb(202 196 255);
+
+                                .edit-image {
+                                    background-image: url(../../../../../assets/edit_light.svg) !important;
+                                }
+
+                                .delete-image {
+                                    background-image: url(../../../../../assets/delete_light.svg) !important;
+                                }
+                            }
+                        }
+                    }
+
+                    label {
+                        display: block;
+                        color: #232e75;
+                        font-weight: 600;
+                        font-size: 16px;
+                    }
+
+                    .half-width {
+                        width: 50%;
+                        display: inline-block;
+                    }
+
+                    .note-data {
+                        color: #9ea0a7;
+                        margin: 10px 0px;
+                        display: inline-block;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-dialog.dynamic-body {
+        width: 80%;
+        .modal-content {
+            margin-top: 50px;
+            .modal-header {
+                .modal-title {
+                    text-align: left;
+                }
+            }
+            .modal-body {
+                max-height: calc(92vh);
+                min-height: 200px;
+                overflow: auto;
+            }
+        }
+
+    }
+    
+}
