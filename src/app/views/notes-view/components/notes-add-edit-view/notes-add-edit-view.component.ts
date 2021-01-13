@@ -40,6 +40,8 @@ import { parseDataForSave } from '../../state/notes-view.helper';
 export class NotesAddEditViewComponent implements OnInit{
     showModal: boolean;
     state: string;
+    url: string;
+    format: string;
     selectedNote: IUserNote;
     ngUnsubscriber: Subject<any> = new Subject<any>();
 
@@ -73,16 +75,38 @@ export class NotesAddEditViewComponent implements OnInit{
     }
 
     saveNote() {
-        this.state.toLowerCase() == 'add' ? this._notesSvc.dSaveNote(parseDataForSave(this.selectedNote, this.state)) : this._notesSvc.dSaveNote(parseDataForSave(this.selectedNote, this.state));
+        this.state.toLowerCase() == 'add' ? this._notesSvc.dSaveNote(parseDataForSave(this.selectedNote, this.state)) : this._notesSvc.dEditNote(parseDataForSave(this.selectedNote, this.state));
     }
 
     editNote() {
         this._notesSvc.dSetAddEditViewState({ flag: true, state: 'Edit'});
     }
 
-    deleteNote() {
-        this._notesSvc.dDeleteNote(this.selectedNote.id);
+    deactivateNote() {
+        this.selectedNote.status = "inactive";
+        this._notesSvc.dEditNote(parseDataForSave(this.selectedNote, this.state));
     }
+
+    activateNote() {
+        this.selectedNote.status = "active";
+        this._notesSvc.dEditNote(parseDataForSave(this.selectedNote, this.state));
+    }
+
+    onSelectFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+          if (file.type.indexOf("image") > -1) {
+            this.selectedNote.mediaFormat = "image";
+          } else if (file.type.indexOf("video") > -1) {
+            this.selectedNote.mediaFormat = "video";
+          }
+          reader.onload = event => {
+            this.selectedNote.media = (<FileReader>event.target).result.toString();
+          };
+        }
+      }
 
     ngOnDestroy() {
         this.ngUnsubscriber.next();

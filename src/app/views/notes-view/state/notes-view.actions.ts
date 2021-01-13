@@ -18,6 +18,7 @@ export class NotesViewActions {
     static DELETE_NOTE                              = '[NOTES_VIEW] DELETE_NOTE';
     static NOTE_DELETED                             = '[NOTES_VIEW] NOTE_DELETED';
     static SET_SEARCH_TERM                          = '[NOTES_VIEW] SET_SEARCH_TERM';
+    static SET_ACTIVE_TAB                           = '[NOTES_VIEW] SET_ACTIVE_TAB';
 
 
     fetchUserNotes                                  = ActionCreatorFactory.create!(NotesViewActions.FETCH_USER_NOTES);
@@ -33,4 +34,5 @@ export class NotesViewActions {
     deleteNote                                      = ActionCreatorFactory.create!(NotesViewActions.DELETE_NOTE); 
     noteDeleted                                     = ActionCreatorFactory.create!(NotesViewActions.NOTE_DELETED); 
     setSearchTerm                                   = ActionCreatorFactory.create!(NotesViewActions.SET_SEARCH_TERM); 
+    setActiveTab                                    = ActionCreatorFactory.create!(NotesViewActions.SET_ACTIVE_TAB); 
 }

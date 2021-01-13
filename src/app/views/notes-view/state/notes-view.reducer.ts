@@ -14,6 +14,7 @@ export interface INotesViewState {
   formState: string;
   searchTerm: string;
   viewLoading: boolean;
+  activeTab: string;
 }
 
 export const DEFAULT_NOTES_STATE = {
@@ -22,7 +23,8 @@ export const DEFAULT_NOTES_STATE = {
   addEditViewState: false,
   formState: '',
   searchTerm: '',
-  viewLoading: false
+  viewLoading: false,
+  activeTab: 'active'
 };
 
 /** Reducer */
@@ -49,6 +51,9 @@ export function notesView(state: INotesViewState = DEFAULT_NOTES_STATE, action: 
 
         case NotesViewActions.SET_VIEW_LOADING:
             return handleSetViewLoading(state, action);
+
+        case NotesViewActions.SET_ACTIVE_TAB:
+            return handleSetActiveTab(state, action);
 
         default:
             return state;
@@ -106,5 +111,10 @@ function handleSetViewLoading(state: INotesViewState, action: IAction): INotesVi
     return newState;
 }
 
+function handleSetActiveTab(state: INotesViewState, action: IAction): INotesViewState {
+    let newState = _.cloneDeep(state);
+    newState.activeTab = action.payload;
+    return newState;
+}
 
 

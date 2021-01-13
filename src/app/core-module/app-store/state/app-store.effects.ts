@@ -15,11 +15,6 @@ export class ApplicationEffects {
             return EMPTY;
         })
     )
-        // .ofType('ERROR')
-        // .switchMap((pAction: IAction) => {
-        //         return Observable.empty();
-        //     }
-        // );
 
     constructor(private action$: Actions) {
     }

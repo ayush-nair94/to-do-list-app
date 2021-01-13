@@ -7,12 +7,11 @@ export function parseDataForSave(pData: IUserNote, pState: string) {
     if(pState.toLowerCase() == 'add') {
         pData.createdBy = JSON.parse(localStorage.getItem('userName'));
         pData.createdDate = date;
+        pData.status = "active";
     }
     pData.updatedDate = date;
     pData.isDeleted = false;
-    pData.status = "active";
     pData.userId = JSON.parse(localStorage.getItem('userId'));
-    pData.media = "";
     return pData;
 }
 

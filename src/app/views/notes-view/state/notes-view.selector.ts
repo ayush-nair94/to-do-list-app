@@ -30,4 +30,9 @@ export function getViewLoading(state: IAppStoreState) {
     return viewLoading;
 }
 
+export function getActiveTab(state: IAppStoreState) {
+    const activeTab = state.notes.activeTab;
+    return activeTab;
+}
+
 

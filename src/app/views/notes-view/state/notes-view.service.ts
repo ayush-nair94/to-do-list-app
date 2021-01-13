@@ -54,6 +54,10 @@ export class NotesViewService {
     this.store.dispatch(this.actions.setSearchTerm(pTerm));
   }
 
+  dSetActiveTab(pTab: string) {
+    this.store.dispatch(this.actions.setActiveTab(pTab));
+  }
+
   //selectors
 
   sGetUsersNote() {
@@ -78,6 +82,10 @@ export class NotesViewService {
 
   sGetViewLoading() {
     return this.store.select(selector.getViewLoading);
+  }
+
+  sGetActiveTab() {
+    return this.store.select(selector.getActiveTab);
   }
 
 }

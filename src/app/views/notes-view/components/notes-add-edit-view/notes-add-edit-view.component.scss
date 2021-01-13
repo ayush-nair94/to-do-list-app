@@ -9,7 +9,7 @@
         width: 40%;
         margin: 0 auto;
         background: #f2f6ff;
-        height: 450px;
+        height: 640px;
         border-radius: 5px;
 
         .modal-content {
@@ -96,7 +96,6 @@
                 }
 
                 .description-field-box {
-                    margin-bottom: 40px;
 
                     label {
                         display: block;
@@ -117,6 +116,24 @@
                     }
                 }
 
+
+                .media-field-box {
+                    margin-bottom: 40px;
+
+                    label {
+                        display: block;
+                        color: grey;
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+
+                    img, video {
+                        height: 150px;
+                        margin-top: 10px;
+                    }
+                    
+                }
+
                 button {
                     float: right;
                     margin: 5px;
@@ -134,6 +151,7 @@
                         box-shadow: 0 10px 30px 0 rgb(202 196 255);
                         background: #ad8cfa;
                         color: white;
+                        cursor: pointer;
                     }
                 }
 
@@ -141,6 +159,7 @@
                     border: solid 1px #ad8cfa;
                     background: transparent;
                     color: #ad8cfa;
+                    cursor: pointer;
                     
 
                     &:hover {
@@ -181,6 +200,14 @@
                                 background-repeat: round;
                             }
 
+                            .restore-image {
+                                width: 13px;
+                                background-image: url(../../../../../assets/restore.svg);
+                                display: inline-block;
+                                height: 13px;
+                                background-repeat: round;
+                            }
+
                             &:hover {
                                 background: #ad8cfa;
                                 color: white;
@@ -193,6 +220,10 @@
 
                                 .delete-image {
                                     background-image: url(../../../../../assets/delete_light.svg) !important;
+                                }
+
+                                .restore-image {
+                                    background-image: url(../../../../../assets/restore_light.svg) !important;
                                 }
                             }
                         }
@@ -207,7 +238,7 @@
 
                     .half-width {
                         width: 50%;
-                        display: inline-block;
+                        display: inline-grid;
                     }
 
                     .note-data {
@@ -215,6 +246,11 @@
                         margin: 10px 0px;
                         display: inline-block;
                         font-size: 15px;
+                    }
+
+                    .media-attachment {
+                        height: 150px;
+                        margin-top: 10px
                     }
                 }
             }

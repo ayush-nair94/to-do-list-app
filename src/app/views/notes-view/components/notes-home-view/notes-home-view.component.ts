@@ -18,6 +18,7 @@ export class NotesHomeViewComponent implements OnInit {
   userNotes: Array<IUserNote>;
   searchTerm: string;
   loading: boolean;
+  activeTab: string;
   ngUnsubscriber: Subject<any> = new Subject<any>();
 
   constructor( private _notesSvc: NotesViewService) {
@@ -40,15 +41,51 @@ export class NotesHomeViewComponent implements OnInit {
     this._notesSvc.sGetViewLoading().pipe(takeUntil(this.ngUnsubscriber)).subscribe((flag: boolean) => {
       this.loading = flag;
     });
+    this._notesSvc.sGetActiveTab().pipe(takeUntil(this.ngUnsubscriber)).subscribe((tab: string) => {
+      this.activeTab = tab;
+    });
   }
 
   add() {
     this._notesSvc.dSetAddEditViewState({flag: true, state: 'Add'});
   }
 
+  setActiveTab(pTab: string) {
+    this._notesSvc.dSetActiveTab(pTab);
+  }
+
   ngOnDestroy() {
     this.ngUnsubscriber.next();
     this.ngUnsubscriber.complete();
+  }
+
+
+  get userNotesList() {
+    if(this.activeTab.toLowerCase() == 'active') {
+        return this.userNotes.filter(note => {
+          if(note != null && note.status != null)
+          return note.status.toLowerCase() == 'active';
+        })
+    } else {
+      return this.userNotes.filter(note => {
+        if(note != null && note.status != null)
+        return note.status.toLowerCase() == 'inactive';
+      })
+    }
+  }
+
+  get activeNoteCount() {
+    return this.userNotes.filter(note => {
+      if(note != null && note.status != null)
+      return note.status.toLowerCase() == 'active';
+    }).length;
+  }
+
+  get inactiveNoteCount() {
+    return this.userNotes.filter(note => {
+      if(note != null && note.status != null)
+      return note.status.toLowerCase() == 'inactive';
+    }).length;
   }
 
 }

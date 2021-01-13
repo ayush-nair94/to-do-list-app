@@ -50,3 +50,43 @@
         }
     }
 }
+
+.tabs {
+    display: inline-block;
+    margin-top: 108px;
+    margin-left: 3%;
+
+    span {
+        padding: 10px 15px;
+        border-radius: 16px;
+        color: grey;  
+        transition: all 0.4s ease;
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+        .note-count {
+            background: #9386ea;
+            color:white;
+            border-radius: 50%;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            padding: 1px;
+            text-align: center;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+    }
+
+    .active {
+        background: #9386ea;
+        color: white;
+
+        .note-count {
+            background: white;
+            color: grey;
+        }
+    }
+}

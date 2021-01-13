@@ -14,8 +14,14 @@
                     <div class="edit-button operation-button" (click)="editNote()">
                         <span class="edit-image"></span> Edit
                     </div>
-                    <div class="delete-button operation-button" (click)="deleteNote()">
-                        <span class="delete-image"></span> Delete
+                    <div class="delete-button operation-button" (click)="deactivateNote()">
+                        <span class="delete-image"></span> Deactivate
+                    </div>
+                </div>
+
+                <div class="view-button-operations" *ngIf="selectedNote?.status.toLowerCase() == 'inactive'">
+                    <div class="edit-button operation-button" (click)="activateNote()">
+                        <span class="restore-image"></span> Activate
                     </div>
                 </div>
 
@@ -31,7 +37,9 @@
 
                 <div class="half-width media-box">
                     <label>Media</label>
-                    <span class="note-data">No Media attached.</span>
+                    <span class="note-data" *ngIf="selectedNote?.media == '' && selectedNote?.mediaFormat == ''">No Media attached.</span>
+                    <img  class="media-attachment" [src]="selectedNote.media" *ngIf="selectedNote.mediaFormat ==='image' && selectedNote.media !== ''"> <br/>
+                    <video class="media-attachment" [src]="selectedNote.media" *ngIf="selectedNote.mediaFormat==='video' && selectedNote.media !== ''" controls></video> <br/>
                 </div>
 
                 <div class="half-width status-box">
@@ -73,6 +81,12 @@
                   <label>Description</label>
                   <textarea class="" type="text" name="description" placeholder="Description" [(ngModel)]="selectedNote.body" #description="ngModel" required></textarea>
                   <span class="error-message" *ngIf="f.submitted && !description.valid">Description is required!</span>
+                </div>
+                <div class="media-field-box">
+                    <label>Media</label>
+                    <img [src]="selectedNote.media" *ngIf="selectedNote.mediaFormat ==='image' && selectedNote.media"> <br/>
+                    <video [src]="selectedNote.media" *ngIf="selectedNote.mediaFormat==='video' && selectedNote.media" controls></video> <br/>
+                    <input type='file' (change)="onSelectFile($event)" accept=".mp4,.jpg, .jpeg, .png"/>
                 </div>
                 <div class="button-operations">
                     <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>

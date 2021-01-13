@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { UserService } from '../state/user.service';
-import { IExistingUser, INewUser } from '../models/IUser';
 
 @Component({
   selector: 'login',

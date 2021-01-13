@@ -1,21 +1,25 @@
 <header-view></header-view>
-<div class="add-note-button" *ngIf="userNotes?.length > 0">
+<div class="tabs" *ngIf="!loading">
+    <span [ngClass]="{'active': activeTab.toLowerCase() == 'active'}" (click)="setActiveTab('active')">Active <span class="note-count">{{ activeNoteCount }}</span></span>
+    <span [ngClass]="{'active': activeTab.toLowerCase() == 'inactive'}" (click)="setActiveTab('inactive')">Inactive<span class="note-count">{{ inactiveNoteCount }}</span></span>
+</div>
+<div class="add-note-button" *ngIf="userNotesList?.length > 0">
     <button type="button" class="add-button" (click)="add()" routerLink="/add" > + Add Note</button>
 </div>
 <div class="user-notes-list-view" *ngIf="!loading">
-    <div *ngIf="userNotes?.length == 0" class="empty-note-details-div">
+    <div *ngIf="userNotesList?.length == 0" class="empty-note-details-div">
         <div class="empty-note-image">
             <img src="assets/note.svg" id="icon" alt="Company Icon" />
         </div>
         <div class="empty-note-text">
-            There are no notes to display here.
+            There are no notes in this section to display here.
         </div>
-        <div class="add-note-button">
+        <div class="add-note-button" *ngIf="activeTab.toLowerCase() != 'inactive'">
             <button type="button" class="add-button" (click)="add()" routerLink="/add" > + Add Note</button>
         </div>
     </div>
 
-    <card *ngFor="let note of userNotes" [cardData]="note"></card>
+    <card *ngFor="let note of userNotesList" [cardData]="note"></card>
 
 </div>
 

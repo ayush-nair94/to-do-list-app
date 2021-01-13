@@ -4,6 +4,7 @@ export interface IUserNote {
     title: string;
     body: string;
     media: string;
+    mediaFormat: string;
     status: string;
     createdDate: Date;
     updatedDate: Date;
@@ -17,6 +18,7 @@ export class UserNote {
     title: string;
     body: string;
     media: string;
+    mediaFormat: string;
     status: string;
     createdDate: Date;
     updatedDate: Date;
@@ -29,6 +31,7 @@ export class UserNote {
         this.title = "";
         this.body = "";
         this.media = "";
+        this.mediaFormat = "";
         this.status = "";
     }
 }
