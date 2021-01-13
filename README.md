@@ -1,27 +1,21 @@
-# Game
+# TrackNote
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+TrackNote is a small prototype application which keeps track of to-do tasks for a paticular user. It also enables to deactivate a note and also to reactivate back as and when required. It also allows user to search for a specific note among other notes in list with relevance to name, body, created/updated date etc.
 
-## Development server
+## Technical Details
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This prototype application has been developed using Angular10. It is a static application which uses Angular-in-memory-web-api for the CRUD Api calls of notes and authentication module. For state management of application, [NGRX10](https://ngrx.io/) has been used. For styling part, this application stick to traditional CSS styling.
 
-## Code scaffolding
+## Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The application has already a default user and few notes attached to the user. However, a new user can signup and login and create new notes. But since we have used Angular-in-memory-web-api, as a mock backend simulator, on every refresh of browser, the memory gets cleared and hence fall back to initial application state, which means if any user has signed up or created notes for that user, all data would be lost with refresh of browser.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Steps to run the application locally
 
-## Running unit tests
+1. Clone/Download the project from github repository.
+2. Install Node (mine was v12.18.3), Angular CLI(mine was 10.0.8).
+3. Move to the cloned/downloaded folder via terminal. Once inside, run `npm install`.
+4. Once packages are installed, run `ng serve`.
+5. Head to `http://localhost:4200/login` via browser, and then Happy Notetracking!!
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
