@@ -1,38 +1,42 @@
 import { IAppStoreState } from '../../../core-module/app-store/state/app-store.reducer';
+import { createSelector } from '@ngrx/store';
+import { INotesViewState } from './notes-view.reducer';
 
-export function getUserNotes(state: IAppStoreState) {
-    const gameState = state.notes.userNotes;
-    return gameState;
-}
+export const notesFeature = (state: IAppStoreState) => state.notes;
+ 
+export const getUserNotes = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.userNotes
+);
 
-export function getSelectedNote(state: IAppStoreState) {
-    const selectedNote = state.notes.selectedNote;
-    return selectedNote;
-}
+export const getSelectedNote = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.selectedNote
+);
 
-export function getAddEditViewState(state: IAppStoreState) {
-    const addEditViewState = state.notes.addEditViewState;
-    return addEditViewState;
-}
+export const getAddEditViewState = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.addEditViewState
+);
 
-export function getFormState(state: IAppStoreState) {
-    const formState = state.notes.formState;
-    return formState;
-}
+export const getFormState = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.formState
+);
 
-export function getSearchTerm(state: IAppStoreState) {
-    const searchTerm = state.notes.searchTerm;
-    return searchTerm;
-}
+export const getSearchTerm = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.searchTerm
+);
 
-export function getViewLoading(state: IAppStoreState) {
-    const viewLoading = state.notes.viewLoading;
-    return viewLoading;
-}
+export const getViewLoading = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.viewLoading
+);
 
-export function getActiveTab(state: IAppStoreState) {
-    const activeTab = state.notes.activeTab;
-    return activeTab;
-}
+export const getActiveTab = createSelector(
+    notesFeature,
+  (state: INotesViewState) => state.activeTab
+);
 
 
