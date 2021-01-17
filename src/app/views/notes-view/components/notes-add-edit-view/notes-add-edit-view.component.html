@@ -4,7 +4,7 @@
       <!-- Modal content-->
       <div class="modal-content" *ngIf="state.toLowerCase() === 'view'">
         <div class="modal-header">
-          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal(false)">&times;</button>
+          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal()">&times;</button>
           <h4 class="modal-title">{{state}} Note</h4>
         </div>
         <div class="modal-body" id="modalbody">
@@ -64,7 +64,7 @@
 
       <div class="modal-content" *ngIf="state.toLowerCase() !== 'view'">
         <div class="modal-header">
-          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal(false)">&times;</button>
+          <button type="button" class="close secondary" data-dismiss="modal" (click)="hideModal()">&times;</button>
           <h4 class="modal-title">{{state}} Note</h4>
         </div>
         <div class="modal-body" id="modalbody">
@@ -89,7 +89,7 @@
                     <input type='file' (change)="onSelectFile($event)" accept=".mp4,.jpg, .jpeg, .png"/>
                 </div>
                 <div class="button-operations">
-                    <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+                    <button type="button" class="cancel-button" (click)="hideModal()">Cancel</button>
                     <button type="submit" class="save-button">Save</button>
                 </div>
             </form>

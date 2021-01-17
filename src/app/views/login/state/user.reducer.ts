@@ -27,9 +27,6 @@ export function user(state: IUserState = DEFAULT_USER_STATE, action: IAction): I
 
         case UserActions.SET_SIGN_UP_STATE:
             return handleSetSignUpState(state, action);
-
-        case UserActions.USER_DETAILS_FETCHED:
-            return handleUserDetailsFetched(state, action);
        
         default:
             return state;
@@ -60,13 +57,6 @@ function handleSetSignUpState(state: IUserState, action: IAction): IUserState {
     return newState;
 }
 
-function handleUserDetailsFetched(state: IUserState, action: IAction): IUserState {
-    let newState = _.cloneDeep(state);
-    let name = action.payload.userName !== undefined && action.payload.userName !== "" ? action.payload.userName : "User Anony";
-    localStorage.setItem('userName', JSON.stringify(name));
-    newState.routerUrl = 'home';
-    return newState;
-}
 
 
 

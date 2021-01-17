@@ -46,30 +46,24 @@ export class NotesAddEditViewComponent implements OnInit{
     ngUnsubscriber: Subject<any> = new Subject<any>();
 
     constructor(private _notesSvc: NotesViewService, private _router: Router) {
-        this._notesSvc.sGetAddEditViewState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((flag: boolean) => {
-            if(this.showModal && !flag) {
-                this._router.navigate(['notes/']);
-            }
-            this.showModal = flag;
-        });
-        this._notesSvc.sGetFormState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: string) => {
-            this.state = data;
-        });
-        this._notesSvc.sGetSelectedNote().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: IUserNote) => {
-            this.selectedNote = _.cloneDeep(data);
-        });
     }
 
     ngOnInit() {
-
+      this._notesSvc.sGetAddEditViewState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((flag: boolean) => {
+        if(this.showModal && !flag) {
+            this._router.navigate(['notes/']);
+        }
+        this.showModal = flag;
+      });
+      this._notesSvc.sGetFormState().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: string) => {
+          this.state = data;
+      });
+      this._notesSvc.sGetSelectedNote().pipe(takeUntil(this.ngUnsubscriber)).subscribe((data: IUserNote) => {
+          this.selectedNote = _.cloneDeep(data);
+      });
     }
 
-    hideModal(pValue) {
-        this._notesSvc.dSetAddEditViewState({ flag: false, state: ''});
-        this._router.navigate(['notes/']);
-    }
-
-    cancel() {
+    hideModal() {
         this._notesSvc.dSetAddEditViewState({ flag: false, state: ''});
         this._router.navigate(['notes/']);
     }

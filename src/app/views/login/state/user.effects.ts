@@ -24,7 +24,6 @@ export class UserEffects {
       ofType(UserActions.UserActions.LOGIN_USER),
       switchMap((pAction: IAction) =>{
             return concat (
-                //of({type: '[NOTES_VIEW] SET_VIEW_LOADING', payload: true}),
                 this._dataStoreApi.getUsers()
                     .pipe(
                         switchMap((data: Array<IUser>) => {
@@ -39,11 +38,9 @@ export class UserEffects {
                             } else {
                                 this._alertSvc.error('Wrong Username or Password! Please try again');
                                 return EMPTY;
-                                //error message
                             }
                         })
                     ),
-                //of({type: '[NOTES_VIEW] SET_VIEW_LOADING', payload: false})
             )
        })
     ));
@@ -54,17 +51,6 @@ export class UserEffects {
       ofType(UserActions.UserActions.SIGN_UP_USER),
       switchMap((pAction: IAction) =>{
             return concat (
-                //of({type: '[NOTES_VIEW] SET_VIEW_LOADING', payload: true}),
-                // this._dataStoreApi.signupUser(pAction.payload)
-                //     .pipe(
-                //         switchMap((data: boolean) => {
-                //             if(data) {
-                //                 return of({type: '[User] USER_SIGNED_UP', payload: data})
-                //             } else {
-                //                 //error message
-                //             }
-                //         })
-                //     ),
                 this._dataStoreApi.getUsers()
                     .pipe(
                         switchMap((data: Array<IUser>) => {
@@ -99,7 +85,6 @@ export class UserEffects {
                             }
                         })
                     ),
-                //of({type: '[NOTES_VIEW] SET_VIEW_LOADING', payload: false})
             )
        })
     ));

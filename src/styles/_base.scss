@@ -76,22 +76,6 @@ home{
   position: relative;
 }
 
-game {
-  flex: 1;
-}
-
-menu {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content:space-around;
-}
-
-game, menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .model-container{
   z-index: 1000;
   position: fixed;

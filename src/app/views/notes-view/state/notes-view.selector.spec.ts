@@ -1,6 +1,6 @@
 import * as fromSelectors from './notes-view.selector';
 import { INotesViewState } from './notes-view.reducer';
-import { UserNote, IUserNote } from 'src/app/data-store/interfaces/IUserNote';
+import { IUserNote } from 'src/app/data-store/interfaces/IUserNote';
 
 describe('NotesSelectors', () => {
     let notesViewState: INotesViewState;

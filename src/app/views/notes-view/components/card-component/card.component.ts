@@ -13,17 +13,13 @@ import { NotesViewService } from '../../state/notes-view.service';
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   ngUnsubscriber: Subject<any> = new Subject<any>();
 
   cardEntityDetail: IUserNote;
 
   constructor(private _notesSvc: NotesViewService) {
-  }
-
-  ngOnInit() {
-    
   }
 
   viewNote() {
@@ -36,7 +32,7 @@ export class CardComponent implements OnInit {
   }
 
   get updatedDate() {
-      if(this.cardEntityDetail !== null && this.cardEntityDetail.updatedDate !== null && this.cardEntityDetail !== undefined && this.cardEntityDetail.updatedDate !== undefined) {
+      if(this.cardEntityDetail !== null && this.cardEntityDetail !== undefined && this.cardEntityDetail.updatedDate !== null  && this.cardEntityDetail.updatedDate !== undefined) {
         let date = moment.utc(this.cardEntityDetail.updatedDate).local();
         return date.format('DD/MM/YYYY HH:mm:ss');
       } else {
